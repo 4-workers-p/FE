@@ -82,3 +82,4 @@ UI 프리미티브는 직접 만들지 않고 `@commercehub/hubkit`을 우선 �
 - [`docs/design-collaboration.md`](docs/design-collaboration.md)
 - [`docs/domain-glossary.md`](docs/domain-glossary.md)
 - [`docs/release-checklist.md`](docs/release-checklist.md)
+- [`docs/supabase-sync.md`](docs/supabase-sync.md) — 이 저장소 문서가 사내 RAG로 자동 동기화되는 방식

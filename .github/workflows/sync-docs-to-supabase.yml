@@ -1,0 +1,34 @@
+name: Sync docs to Supabase RAG
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "README.md"
+      - "CLAUDE.md"
+      - "docs/**/*.md"
+  schedule:
+    # 매주 월요일 03:00 UTC (KST 12:00) — 누락분 포함 전체 재점검
+    - cron: "0 3 * * 1"
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # git log 기반으로 각 파일의 마지막 커밋 시각을 정확히 구하기 위해 전체 히스토리 필요
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Sync markdown docs into Supabase documents table
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          INGEST_FUNCTION_URL: ${{ secrets.INGEST_FUNCTION_URL }}
+          INGEST_API_SECRET: ${{ secrets.INGEST_API_SECRET }}
+        run: node scripts/sync-to-supabase.mjs
