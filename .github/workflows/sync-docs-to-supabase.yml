@@ -29,6 +29,4 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          INGEST_FUNCTION_URL: ${{ secrets.INGEST_FUNCTION_URL }}
-          INGEST_API_SECRET: ${{ secrets.INGEST_API_SECRET }}
         run: node scripts/sync-to-supabase.mjs
