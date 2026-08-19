@@ -7,9 +7,9 @@ on:
       - "README.md"
       - "CLAUDE.md"
       - "docs/**/*.md"
-  schedule:
-    # 매주 월요일 03:00 UTC (KST 12:00) — 누락분 포함 전체 재점검
-    - cron: "0 3 * * 1"
+  # schedule:
+  #   # 매주 월요일 03:00 UTC (KST 12:00) — 누락분 포함 전체 재점검
+  #   - cron: "0 3 * * 1"
   workflow_dispatch: {}
 
 jobs:
